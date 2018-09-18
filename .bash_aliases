@@ -71,7 +71,7 @@ alias dpython='docker run -it --name python2 -v /home/enric/Downloads/test/pytho
 alias dpython3='docker run -it --name python3 -v /home/enric/Downloads/test/python:/data -w="/data" python:3 bash'
 
 #Run a "Jupyter" notebook in a container 
-alias djupyter='nvidia-docker run -it -p 8888:8888 -e PASSWORD=testpass -v /home/enric/Downloads/test/jupyter/:/data -w="/data" -d tensorflow/tensorflow:latest-gpu;sleep 1; firefox -new-tab -url http://localhost:8888'
+alias djupyter='nvidia-docker run -it -p 8888:8888 -e PASSWORD=testpass -v /home/enric/Downloads/test/jupyter/:/data -w="/data" -d tensorflow/tensorflow:latest-gpu;sleep 1; firefox -new-tab -url http://jupyter:8888'
 
 #Start "tmux" with 3 panes
 alias tmux3='tmux new-session \; split-window -h \; split-window -v \; attach'
