@@ -29,7 +29,7 @@ alias c='xclip -sel clip'
 alias trans='docker run --rm slafs/translate-shell'
 alias transb='trans :es -b'
 #"Speed" test
-alias speed='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -'
+alias speed='docker run --rm python:2.7 curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py |python -'
 
 #"Ports" test
 alias ports='sudo nmap -sS -O'
@@ -51,9 +51,10 @@ alias duf='du -h --max-depth=1 | sort -hr'
 alias count='find . -type f | wc -l'
 
 #I beat dyslexia
-alias ñs='sl'
-alias LS='sl'
-alias ks='sl'
+alias ñs='sl -e'
+alias LS='sl -e'
+alias ks='sl -e'
+alias dc='sl -e -F'
 
 #Check web SSL "cert"
 #e.g. cert teamchat:443
@@ -61,3 +62,16 @@ alias cert='echo "" | openssl s_client -connect '
 
 #order files by date, "ld"
 alias ld='ll -ltha --color | head -15'
+
+#Start "Gogs"
+alias gogs='docker-compose -f /home/enric/Documents/gogs/docker-compose.yml up -d'
+
+#Run "Python" in a container to prevent poluting the system
+alias dpython='docker run -it --name python2 -v /home/enric/Downloads/test/python:/data -w="/data" python:2.7 bash'
+alias dpython3='docker run -it --name python3 -v /home/enric/Downloads/test/python:/data -w="/data" python:3 bash'
+
+#Run a "Jupyter" notebook in a container 
+alias djupyter='nvidia-docker run -it -p 8888:8888 -e PASSWORD=testpass -v /home/enric/Downloads/test/jupyter/:/data -w="/data" -d tensorflow/tensorflow:latest-gpu;sleep 1; firefox -new-tab -url http://localhost:8888'
+
+#Start "tmux" with 3 panes
+alias tmux3='tmux new-session \; split-window -h \; split-window -v \; attach'
