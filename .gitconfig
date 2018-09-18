@@ -1,0 +1,8 @@
+[user]
+	email = enric.moreu.filella@gmail.com
+	name = Enric Moreu
+	username = enric1994
+[credential]
+        helper = cache --timeout 50000
+[http]
+        sslCAInfo = /home/enric/Documents/myCA/root_CA/root_CA.crt
