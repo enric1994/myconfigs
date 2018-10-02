@@ -73,5 +73,19 @@ alias dpython3='docker run -it --name python3 -v /home/enric/Downloads/test/pyth
 #Run a "Jupyter" notebook in a container 
 alias djupyter='nvidia-docker run -it -p 8888:8888 -e PASSWORD=testpass -v /home/enric/Downloads/test/jupyter/:/data -w="/data" -d tensorflow/tensorflow:latest-gpu;sleep 1; firefox -new-tab -url http://jupyter:8888'
 
+#RUN an ubuntu container to make tests
+alias dubuntu='docker run -it --name myubuntu -v /home/enric/Downloads/test/ubuntu:/data -w="/data" enric1994/myubuntu:0.1.0 bash'
+
 #Start "tmux" with 3 panes
 alias tmux3='tmux new-session \; split-window -h \; split-window -v \; attach'
+
+#"Transfer" SH
+transfer() {
+    curl --progress-bar --upload-file "$1" https://transfer.sh/$(basename $1) | tee /dev/null;
+    echo " "
+}
+
+alias transfer=transfer
+
+#"Markdown to PDF" container
+alias mdpdf="docker run --rm -it -w /data -v $(pwd):/data enric1994/mdpdf mdpdf"
