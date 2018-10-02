@@ -24,7 +24,7 @@ alias transb='trans :es -b'
 alias speed='docker run --rm python:2.7 curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py |python -'
 
 #"Markdown to PDF" This container creates a PDF using a Markdown file e.g. "mdpdf README.md"
-alias mdpdf="docker run --rm -it -w /data -v $(pwd):/data enric1994/mdpdf mdpdf"
+alias mdpdf="docker run --rm -it -w /data -v $(pwd):/data enric1994/mdpdf mdpdf "
 
 #Start my local "Gogs"
 alias gogs='docker-compose -f /home/enric/Documents/gogs/docker-compose.yml up -d'
