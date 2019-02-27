@@ -1,13 +1,16 @@
 #### Docker
 
+#Dockerize folder
+alias dockerize='git clone https://github.com/enric1994/docker.git'
+
 # "Up". Start a docker-compose.yml file and check the containers status
 alias u='docker-compose up -d;p'
 alias uu='docker-compose up'
 # "Clean Containers". Stop and remove all the containers.
-alias cc='docker stop $(docker ps -a -q); docker rm  $(docker ps -a -q);docker ps -a'
+alias cc='docker stop $(docker ps -a -q); docker rm  $(docker ps -a -q); dvn; p'
 
 # "Docker Volumes". Delete all the Docker volumes
-alias dv='docker volume prune'
+alias dvn='docker volume prune -f; docker network prune -f'
 
 # "Processes". Display docker containers status
 alias p='docker ps -a --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
@@ -36,8 +39,11 @@ alias dpython3='docker run -it --name python3 -v /home/enric/Downloads/test/pyth
 #Run a "Jupyter" notebook in a container and open firefox
 alias djupyter='nvidia-docker run -it -p 8888:8888 -e PASSWORD=testpass -v /home/enric/Downloads/test/jupyter/:/data -w="/data" -d tensorflow/tensorflow:latest-gpu;sleep 1; firefox -new-tab -url http://jupyter:8888'
 
-#RUN an ubuntu container to make tests
+#Run "Ubuntu" container to make tests
 alias dubuntu='docker run -it --name myubuntu -v /home/enric/Downloads/test/ubuntu:/data -w="/data" enric1994/myubuntu:0.1.0 bash'
+
+#"Emoji" quick search
+alias emoji='docker run --rm enric1994/emoji'
 
 #### Others
 
@@ -72,7 +78,10 @@ alias count='find . -type f | wc -l'
 alias ñs='sl -e'
 alias LS='sl -e'
 alias ks='sl -e'
-alias dc='sl -e -F'
+
+#Clippy assistant
+alias clippy='docker run --rm enric1994/clippy'
+alias mkdr='clippy It looks like you are trying to create a directory. Do you need assistance?'
 
 #Check web SSL "cert"
 #e.g. cert 127.0.0.1:443
@@ -86,5 +95,11 @@ transfer() {
     curl --progress-bar --upload-file "$1" https://transfer.sh/$(basename $1) | tee /dev/null;
     echo " "
 }
+
 alias transfer=transfer
 
+#Run the previous command with sudo
+alias please='sudo $(fc -ln -1)'
+
+#Weather
+alias weather='curl wttr.in'
