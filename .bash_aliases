@@ -23,6 +23,9 @@ alias p='docker ps -a --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
 alias trans='docker run --rm slafs/translate-shell'
 alias transb='trans :es -b'
 
+# "Define" some word
+alias define='docker run --rm enric1994/define'
+
 #"Speed" test
 alias speed='docker run --rm python:2.7 curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py |python -'
 
@@ -37,7 +40,7 @@ alias dpython='docker run -it --name python2 -v /home/enric/Downloads/test/pytho
 alias dpython3='docker run -it --name python3 -v /home/enric/Downloads/test/python:/data -w="/data" python:3 bash'
 
 #Run a "Jupyter" notebook in a container and open firefox
-alias djupyter='nvidia-docker run -it -p 8888:8888 -e PASSWORD=testpass -v /home/enric/Downloads/test/jupyter/:/data -w="/data" -d tensorflow/tensorflow:latest-gpu;sleep 1; firefox -new-tab -url http://jupyter:8888'
+alias djupyter='nvidia-docker run -it -p 8888:8888 -e PASSWORD=testpass -v /home/enric/Downloads/test/jupyter/:/data -w="/data" -d tensorflow/tensorflow:1.11.0-gpu;sleep 1; firefox -new-tab -url http://jupyter:8888 '
 
 #Run "Ubuntu" container to make tests
 alias dubuntu='docker run -it --name myubuntu -v /home/enric/Downloads/test/ubuntu:/data -w="/data" enric1994/myubuntu:0.1.0 bash'
@@ -52,7 +55,6 @@ alias h='cat /etc/hosts;sudo nano /etc/hosts'
 
 # "Copy". Copy the previous otuput to the clipboard, e.g. "ls|c"
 alias c='xclip -sel clip'
-
 
 #"Ports" scan e.g. "ports 127.0.01" (will prompt password)
 alias ports='sudo nmap -sS -O'
@@ -103,3 +105,8 @@ alias please='sudo $(fc -ln -1)'
 
 #Weather
 alias weather='curl wttr.in'
+
+# Random commit messages: Whatthecommit
+function whatthecommit() {
+  curl --silent --fail https://whatthecommit.com/index.txt
+}
