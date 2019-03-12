@@ -110,3 +110,9 @@ alias weather='curl wttr.in'
 function whatthecommit() {
   curl --silent --fail https://whatthecommit.com/index.txt
 }
+
+# Bat (improved cat)
+alias cat='bat'
+
+# TLDR man pages
+alias tldr='docker run --rm -it -v ~/.tldr/:/root/.tldr/ nutellinoit/tldr'
